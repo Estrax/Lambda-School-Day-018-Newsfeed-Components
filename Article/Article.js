@@ -30,7 +30,10 @@ class Article {
   }
 
   deleteArticle() {
-    this.domElement.classList.toggle("delete");
+    TweenMax.to(this.domElement, 1, {x: -200, opacity: 0, ease: Power1.easeInOut, repeat: 0});
+    setTimeout(() => {
+      this.domElement.classList.toggle("delete");
+    }, 1000);
   }
 }
 
@@ -113,7 +116,7 @@ function makeNewArticle(title, date, paragraph2, paragraph3, paragraph4){
   article1.append(article1_p4);
   article1.append(article1_span);
   article1.prepend(article1_button);
-  document.querySelector('body').appendChild(article1);
+  document.querySelector('.articles').appendChild(article1);
 }
 
 const articles_new = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
