@@ -69,9 +69,7 @@ const articleContent = {
   "date": date.toLocaleString('en-us', { month: 'short' }) + " " + date.getDate() + ", " + date.getFullYear()
 }
 
-const articles_new = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-articles_new.forEach(() => {
+function makeNewArticle(title, date, paragraph2, paragraph3, paragraph4){
   let article1 = document.createElement('div');
   let article1_h2 = document.createElement('h2')
   let article1_p1 = document.createElement('p');
@@ -80,15 +78,15 @@ articles_new.forEach(() => {
   let article1_p4 = document.createElement('p');
   let article1_span = document.createElement('span');
   article1.classList.toggle("article");
-
-  article1_h2.textContent = articleContent.title[Math.floor(Math.random()*articleContent.title.length)];
-  article1_p1.textContent = articleContent.date;
+  
+  article1_h2.textContent = title;
+  article1_p1.textContent = date;
   article1_p1.classList.toggle("date");
-  article1_p2.textContent = articleContent.paragraphs[Math.floor(Math.random()*articleContent.paragraphs.length)];
-  article1_p3.textContent = articleContent.paragraphs[Math.floor(Math.random()*articleContent.paragraphs.length)];
-  article1_p4.textContent = articleContent.paragraphs[Math.floor(Math.random()*articleContent.paragraphs.length)];
+  article1_p2.textContent = paragraph2;
+  article1_p3.textContent = paragraph3;
+  article1_p4.textContent = paragraph4;
   article1_span.classList.toggle('expandButton');
-
+  
   article1.append(article1_h2);
   article1.append(article1_p1);
   article1.append(article1_p2);
@@ -96,6 +94,16 @@ articles_new.forEach(() => {
   article1.append(article1_p4);
   article1.append(article1_span);
   document.querySelector('body').appendChild(article1);
+}
+
+const articles_new = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+articles_new.forEach(() => {
+  let title = articleContent.title[Math.floor(Math.random()*articleContent.title.length)];
+  let date = articleContent.date;
+  let p2c = articleContent.paragraphs[Math.floor(Math.random()*articleContent.paragraphs.length)];
+  let p3c = articleContent.paragraphs[Math.floor(Math.random()*articleContent.paragraphs.length)];
+  let p4c = articleContent.paragraphs[Math.floor(Math.random()*articleContent.paragraphs.length)];
+  makeNewArticle(title, date, p2c, p3c, p4c);
 });
 
 let articles = document.querySelectorAll('.article');
