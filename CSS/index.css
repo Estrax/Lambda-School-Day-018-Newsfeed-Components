@@ -110,9 +110,6 @@
   border: 1px solid green;
   border-radius: 100%;
 }
-.article-open {
-  height: 400px;
-}
 .delete {
   display: none;
 }
