@@ -7,14 +7,21 @@ class Article {
     // create a reference to the ".expandButton" class. 
     this.expandButton = domElement.querySelector('.expandButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
-    this.expandButton.textContent = "expand"
+    this.expandButton.textContent = "expand";
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', () => this.expandArticle());
+    
+    this.deleteButton = this.domElement.querySelector(".deleteButton");
+    this.deleteButton.addEventListener("click", () => this.deleteArticle());
   }
 
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle("article-open");
+  }
+
+  deleteArticle() {
+    this.domElement.classList.toggle("delete");
   }
 }
 
@@ -77,6 +84,7 @@ function makeNewArticle(title, date, paragraph2, paragraph3, paragraph4){
   let article1_p3 = document.createElement('p');
   let article1_p4 = document.createElement('p');
   let article1_span = document.createElement('span');
+  let article1_button = document.createElement('button');
   article1.classList.toggle("article");
   
   article1_h2.textContent = title;
@@ -86,6 +94,8 @@ function makeNewArticle(title, date, paragraph2, paragraph3, paragraph4){
   article1_p3.textContent = paragraph3;
   article1_p4.textContent = paragraph4;
   article1_span.classList.toggle('expandButton');
+  article1_button.classList.toggle('deleteButton');
+  article1_button.textContent = "x";
   
   article1.append(article1_h2);
   article1.append(article1_p1);
@@ -93,6 +103,7 @@ function makeNewArticle(title, date, paragraph2, paragraph3, paragraph4){
   article1.append(article1_p3);
   article1.append(article1_p4);
   article1.append(article1_span);
+  article1.prepend(article1_button);
   document.querySelector('body').appendChild(article1);
 }
 
