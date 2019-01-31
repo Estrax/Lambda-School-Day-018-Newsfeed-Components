@@ -117,6 +117,7 @@ function makeNewArticle(title, date, paragraph2, paragraph3, paragraph4){
   article1.append(article1_span);
   article1.prepend(article1_button);
   document.querySelector('.articles').appendChild(article1);
+  return article1;
 }
 
 const articles_new = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -131,3 +132,61 @@ articles_new.forEach(() => {
 
 let articles = document.querySelectorAll('.article');
 articles.forEach(article => new Article(article));
+
+// some code to add new articles
+
+let inputSection = document.createElement('div');
+let input_title_placeholder = document.createElement('h2');
+let input_title = document.createElement('input');
+let input_paragraph = document.createElement('input');
+let input_paragraph2 = document.createElement('input');
+let input_paragraph3 = document.createElement('input');
+let input_submit = document.createElement('button');
+
+input_title_placeholder.textContent = "New article";
+input_submit.textContent = "Add new article";
+
+input_title.setAttribute('type', 'text');
+input_title.setAttribute('placeholder', 'Title');
+input_title.id = 'inTitle';
+
+input_paragraph.setAttribute('type', 'text');
+input_paragraph.setAttribute('placeholder', 'First paragraph');
+input_paragraph.id = 'inFirst';
+
+input_paragraph2.setAttribute('type', 'text');
+input_paragraph2.setAttribute('placeholder', 'Second paragraph');
+input_paragraph2.id = 'inSecond';
+
+input_paragraph3.setAttribute('type', 'text');
+input_paragraph3.setAttribute('placeholder', 'Third paragraph');
+input_paragraph3.id = 'inThird';
+
+// input_submit.addEventListener('click', newArticle());
+
+inputSection.appendChild(input_title_placeholder);
+inputSection.appendChild(input_title);
+inputSection.appendChild(input_paragraph);
+inputSection.appendChild(input_paragraph2);
+inputSection.appendChild(input_paragraph3);
+inputSection.appendChild(input_submit);
+
+document.body.appendChild(inputSection);
+
+input_submit.addEventListener('click', newArticle);
+
+function newArticle(event){
+  const intitle = document.getElementById("inTitle").value;
+  const indate = articleContent.date;
+  const infirst = document.getElementById("inFirst").value;
+  const insecond = document.getElementById("inSecond").value;
+  const inthird = document.getElementById("inThird").value;
+
+  const new_article = makeNewArticle(intitle, indate, infirst, insecond, inthird);
+  document.getElementById("inTitle").value = "";
+  document.getElementById("inFirst").value = "";
+  document.getElementById("inSecond").value = "";
+  document.getElementById("inThird").value = "";
+
+  return new Article(new_article);
+}
