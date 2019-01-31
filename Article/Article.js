@@ -143,6 +143,8 @@ let input_paragraph2 = document.createElement('input');
 let input_paragraph3 = document.createElement('input');
 let input_submit = document.createElement('button');
 
+inputSection.id = "inputsection";
+
 input_title_placeholder.textContent = "New article";
 input_submit.textContent = "Add new article";
 
@@ -161,6 +163,8 @@ input_paragraph2.id = 'inSecond';
 input_paragraph3.setAttribute('type', 'text');
 input_paragraph3.setAttribute('placeholder', 'Third paragraph');
 input_paragraph3.id = 'inThird';
+
+input_submit.id = "inSubmit";
 
 // input_submit.addEventListener('click', newArticle());
 
